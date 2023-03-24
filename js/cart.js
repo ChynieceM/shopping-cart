@@ -69,11 +69,17 @@ function removeItemFromCart(event) {
   // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
   // TODO: Save the cart back to local storage
   // TODO: Re-draw the cart table
-  let deletelink = document.querySelector("tr th:first-child");
-  deletelink.addEventListener('click', removeItemFromCart)
-  localStorage.setItem("cart", cart)
-  renderCart()
+  if (event.target.innerHTML == 'X');
+  let targetRow = event.target.parentElement;
+  let deletedItemTarget = targetRow.children[2].innerText;
 
+  for (let i = 0; i < state.cart.items.length; i++){
+    let item = state.cart.items[i].product;
+    if (item.name === deletedItemTarget){
+      state.cart.removeItem(item);
+    }
+  }
+  renderCart();
 }
 
 // This will initialize the page and draw the cart on screen
