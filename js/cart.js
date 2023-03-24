@@ -6,7 +6,12 @@ const table = document.getElementById('cart');
 table.addEventListener('click', removeItemFromCart);
 
 function loadCart() {
-  const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+  const cartItems = undefined
+  //JSON.parse(localStorage.getItem('cart')) || [];
+  let cartObject = JSON.parse(cartString)
+  if(cartObject==undefined){cartItems = []}else{
+    cartItems = cartObject.items
+  }
   state.cart = new Cart(cartItems);
 }
 
@@ -38,7 +43,7 @@ function showCart() {
     let quantity = document.createElement('td');
     quantity.innerHTML = 
 
-    let item = document.createElement('td');
+    item = document.createElement('td');
     item.innerHTML = this.items[i].product.name 
     tableBody.append(tableRow)
     tableRow.append(deleteLink)
