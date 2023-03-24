@@ -38,7 +38,7 @@ this.items = filteredItems;
 Cart.prototype.updateCounter = function() {
   // TODO: Update the cart count in the header nav with the number of items in the Cart
   let cardcount = document.getElementById("itemCount")
-  cardcount = Cart.items.length
+  cardcount.innerHTML = this.items.length;
 }
 
 const CartItem = function(product, quantity) {

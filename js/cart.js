@@ -6,13 +6,15 @@ const table = document.getElementById('cart');
 table.addEventListener('click', removeItemFromCart);
 
 function loadCart() {
-  const cartItems = undefined
-  //JSON.parse(localStorage.getItem('cart')) || [];
-  let cartObject = JSON.parse(cartString)
-  if(cartObject==undefined){cartItems = []}else{
-    cartItems = cartObject.items
-  }
-  state.cart = new Cart(cartItems);
+const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+state.cart = new Cart(cartItems)
+  // let cartItems = undefined
+  // //JSON.parse(localStorage.getItem('cart')) || [];
+  // let cartObject = JSON.parse(localStorage.getItem('cart'))
+  // if(cartObject==undefined){cartItems = []}else{
+  //   cartItems = cartObject.items
+  // }
+  // state.cart = new Cart(cartItems);
 }
 
 // Make magic happen --- re-pull the Cart, clear out the screen and re-draw it
@@ -23,32 +25,37 @@ function renderCart() {
 }
 
 // TODO: Remove all of the rows (tr) in the cart table (tbody)
-function clearCart() {}
+function clearCart() {
+  let table = document.getElementById("cart");
+  let tr = document.querySelectorAll("tr");
+  //tr.remove()
+
+}
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
 
   // TODO: Find the table body
 
-  let tableBody = document.getElementById('cart')
+  let tableBody = document.querySelector('tbody')
 
   // TODO: Iterate over the items in the cart
-  for(let i = 0; i < this.items.length; i++){
+  for(let i = 0; i < state.cart.items.length; i++){
     let tableRow = document.createElement('tr')
-
+console.log(state.cart.items)
    
     let deleteLink = document.createElement('td')
     deleteLink.innerHTML = "X";
 
     let quantity = document.createElement('td');
-    quantity.innerHTML = 
+    quantity.innerHTML = state.cart.items[i].quantity
 
-    item = document.createElement('td');
-    item.innerHTML = this.items[i].product.name 
-    tableBody.append(tableRow)
+    let item = document.createElement('td');
+    item.innerHTML = state.cart.items[i].product.name 
     tableRow.append(deleteLink)
     tableRow.append(quantity)
     tableRow.append(item)
+    tableBody.append(tableRow)
   }
   // TODO: Create a TR
 
