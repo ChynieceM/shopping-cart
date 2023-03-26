@@ -78,6 +78,7 @@ function removeItemFromCart(event) {
     if (item.name === deletedItemTarget){
       state.cart.removeItem(item);
     }
+    localStorage.getItem("cart", JSON.stringify(state.cart.items))
   }
   renderCart();
 }
