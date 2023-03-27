@@ -67,6 +67,7 @@ function updateCartPreview() {
   for(let i = 0; i<state.allProducts.length; i++){
 if (state.allProducts[i].name === selectedProductName){
   product = state.allProducts[i]
+  break;
 }
   }
   let previewDiv = document.createElement('div')

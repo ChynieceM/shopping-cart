@@ -29,7 +29,8 @@ Cart.prototype.removeItem = function(item) {
   // Note: You will have to decide what kind of parameter to pass in here!
 
   let filteredItems = this.items.filter(function(currentItem){
-    return item.name == currentItem.name
+    console.log('filter',item.name, currentItem.name);
+    return item.name !== currentItem.product.name
 
   })
 this.items = filteredItems;

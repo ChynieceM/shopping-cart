@@ -26,9 +26,14 @@ function renderCart() {
 
 // TODO: Remove all of the rows (tr) in the cart table (tbody)
 function clearCart() {
-  let table = document.getElementById("cart");
-  let tr = document.querySelectorAll("tr");
+  let tablebodyRows = document.querySelectorAll('tbody tr')
+  // let tr = document.querySelectorAll("tr");
   //tr.remove()
+  console.log(tablebodyRows)
+  for(let i = 0; i < tablebodyRows.length; i++) {
+    console.log('for')
+    tablebodyRows[i].remove();
+  }
 
 }
 
@@ -42,10 +47,10 @@ function showCart() {
   // TODO: Iterate over the items in the cart
   for(let i = 0; i < state.cart.items.length; i++){
     let tableRow = document.createElement('tr')
-console.log(state.cart.items)
+    console.log(state.cart.items)
    
     let deleteLink = document.createElement('td')
-    deleteLink.innerHTML = "X";
+    deleteLink.innerHTML = 'X';
 
     let quantity = document.createElement('td');
     quantity.innerHTML = state.cart.items[i].quantity
@@ -69,17 +74,22 @@ function removeItemFromCart(event) {
   // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
   // TODO: Save the cart back to local storage
   // TODO: Re-draw the cart table
-  if (event.target.innerHTML == 'X');
-  let targetRow = event.target.parentElement;
-  let deletedItemTarget = targetRow.children[2].innerText;
+  if (event.target.innerHTML == 'X'){
+    let targetRow = event.target.parentElement;
+    let deletedItemTarget = targetRow.children[2].innerText;
 
-  for (let i = 0; i < state.cart.items.length; i++){
-    let item = state.cart.items[i].product;
-    if (item.name === deletedItemTarget){
-      state.cart.removeItem(item);
+    for (let i = 0; i < state.cart.items.length; i++){
+      let item = state.cart.items[i].product;
+      console.log('something',item.name,deletedItemTarget)
+      if (item.name === deletedItemTarget){
+        state.cart.removeItem(item);
+        break;
+      }
+      //localStorage.getItem("cart", JSON.stringify(state.cart.items))
     }
-    localStorage.getItem("cart", JSON.stringify(state.cart.items))
   }
+
+  state.cart.saveToLocalStorage();
   renderCart();
 }
 
