@@ -1,1 +1,63 @@
 /* TODO: Make it awesome */
+
+body {
+    background-color: azure;
+    text-align: center;
+}
+
+h1 {
+    font-size:40px;
+    padding-top: 20px;
+}
+ul li {
+    height:20px;
+    padding:30px;
+}
+
+h3{
+    font-size:20px;
+    color:white;
+    padding-right:50px;
+}
+ul li a {
+    display:inline-block;
+    text-decoration: none;
+    background-color: black;
+    color:white;
+    width:100px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+ol li {
+    font-size: 20px;
+    color:gray;
+    text-shadow: black 1px 1px;
+}
+
+
+#cartContents {
+    text-align: center;
+    background-color:lightskyblue;
+    border:2px solid white;
+    padding-left: 10px;
+}
+#itemCount {
+    font-size:20px;
+    padding-left: 2px;
+    background-color: black;
+    color:white;
+    text-align: center;
+}
+legend {
+    font-size:20px;
+    padding-top: 50px;
+}
+#cart-container {
+    font-size:30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:20px;
+}
+
